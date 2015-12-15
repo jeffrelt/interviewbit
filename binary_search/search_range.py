@@ -23,34 +23,32 @@ class Solution:
     # @param B : integer
     # @return a list of integers
     def searchRange(self, A, B):
-        alb = -1
+        ans_l = ans_h = -1
         lb = 0
-        aub = ub = len(A)-1
+        ub = len(A)-1
         while lb<=ub:
             mid = (lb+ub)>>1
             if A[mid] == B and (mid-1<0 or A[mid-1] < B):
-                alb = mid
+                ans_l = mid
                 break
             if A[mid] >= B:
                 ub = mid-1
             else:
                 lb = mid+1
-        if alb == -1:
+        if ans_l == -1:
             return (-1,-1)
             
-        lb = alb
+        lb = ans_l
         ub = len(A)-1
         while lb<=ub:
             mid = (lb+ub)>>1
             if A[mid] == B and (mid+1>=len(A) or A[mid+1] > B):
-                aub = mid
+                ans_h = mid
                 break
             if A[mid] <= B:
                 lb = mid+1
             else:
                 ub = mid-1
-                
         
-        return [alb,aub]
-        
+        return [ans_l,ans_h]
         
