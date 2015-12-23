@@ -39,9 +39,9 @@ class Solution:
     def isBalanced(self, A):
         val_stack = []
         parent_stack = []
-        type = 0
+        node_type = 0
         while 1:
-            if type == 0: #node to explore
+            if node_type == 0: #node to explore
                 if A.left:
                     parent_stack.append((A,1)) 
                     A = A.left
@@ -53,11 +53,11 @@ class Solution:
                     continue
                 else:
                     val_stack.append(1)
-            elif type == 1: # return to parent from left
+            elif node_type == 1: # return to parent from left
                 if A.right:
                     parent_stack.append((A,2))
                     A = A.right
-                    type = 0
+                    node_type = 0
                     continue
                 else:
                     if val_stack[-1] > 1:
@@ -70,7 +70,7 @@ class Solution:
                     return 0
                 val_stack.append(max(left,right)+1)
             if parent_stack:
-                A, type = parent_stack.pop()
+                A, node_type = parent_stack.pop()
             else:
                 break
-        return 1    
+        return 1     
