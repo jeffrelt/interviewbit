@@ -26,11 +26,12 @@ Return : False or 0
          Because for the root node, left subtree has depth 2 and right subtree has depth 0. 
          Difference = 2 > 1. 
 '''
-# Definition for singly-linked list.
-# class ListNode:
+# Definition for a  binary tree node
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
-#         self.next = None
+#         self.left = None
+#         self.right = None
 
 class Solution:
     # @param A : root node of tree
