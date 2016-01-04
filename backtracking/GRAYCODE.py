@@ -14,6 +14,25 @@ There might be multiple gray code sequences possible for a given n.
 Return any such sequence.
 '''
 
+class BacktrackingSolution:
+    # @param A : integer
+    # @return a list of integers
+    def grayCode(self, A):
+        grey = 0
+        ans = []
+        s = set()
+        while len(ans) < 2**A:
+            ans.append(grey)
+            s.add(grey)
+            bit = 1
+            grey^=bit
+            while grey in s:
+                grey^=bit
+                bit<<=1
+                grey^=bit
+        return ans
+
+
 class Solution:
     # @param A : integer
     # @return a list of integers
