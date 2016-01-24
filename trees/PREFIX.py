@@ -20,12 +20,11 @@ class Solution:
     # @return a list of strings
     def prefix(self, A):
         root = {}
-        root_type = type(root)
         for word in A:
             walk = root
             for i, ch in enumerate(word):
                 if ch in walk:
-                    if type(walk[ch]) == root_type:
+                    if type(walk[ch]) is dict:
                         walk = walk[ch]
                     else:
                         other = walk[ch]
@@ -38,7 +37,7 @@ class Solution:
         for word in A:
             walk = root
             for i, ch in enumerate(word):
-                if type(walk[ch]) != root_type:
+                if type(walk[ch]) is not dict:
                     out.append(word[:i+1])
                     break
                 else:
